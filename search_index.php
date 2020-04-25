@@ -46,6 +46,7 @@
 
 					for($i=0; $i<$newsNum; $i++){
 						$row = mysqli_fetch_assoc($result);
+						$url = 'action-del.php?id='.$row['CASE_NUMBER'];
 						echo "<tr>";
 						echo "<td>{$row['CASE_NUMBER']}</td>";
 						echo "<td>{$row['CASE_STATUS']}</td>";
@@ -53,7 +54,7 @@
 						echo "<td>{$row['DECISION_DATE']}</td>";
 						echo "<td>{$row['ORIGINAL_CERT_DATE']}</td>";
 						echo "<td>
-								<a href='javascript:del(&quot;'+{$row['CASE_NUMBER']}+&quot;'+)'>DELETE</a>
+								<a href='$url'>DELETE</a>
 								
 							  </td>";
 						echo "</tr>";
@@ -65,13 +66,6 @@
 		</table>
 	</div>
 	
-	<script type="text/javascript">
-		function del (id) {
-			if (confirm("are you sure to delete this case？")){
-				window.location = "action-del.php?id="+id;
-				
-			}
-		}
-	</script>
+	
 </body>
 </html>
