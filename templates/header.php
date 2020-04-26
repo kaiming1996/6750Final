@@ -25,10 +25,10 @@
             <a class="nav-link" href="index.php">Home</a>
           </li>
           <?= (isset($nav) && $nav == "cases") ? "<li class=\"nav-item active\">" : "<li class=\"nav-item\">"?>
-            <a class="nav-link" href="search_guest.php">H1B Cases</a>
+            <a class="nav-link" href="cases.php">All H1B Cases</a>
           </li>
-          <li class="nav-item ">
-            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+          <?= (isset($nav) && $nav == "cities") ? "<li class=\"nav-item active\">" : "<li class=\"nav-item\">"?>
+            <a class="nav-link" href="cities.php">By City</a>
           </li>
         </ul>
         <?= isset($user) ?
