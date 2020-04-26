@@ -30,6 +30,15 @@
           <?= (isset($nav) && $nav == "cities") ? "<li class=\"nav-item active\">" : "<li class=\"nav-item\">"?>
             <a class="nav-link" href="cities.php">By City</a>
           </li>
+          </li>
+          <?= (isset($nav) && $nav == "companies") ? "<li class=\"nav-item active\">" : "<li class=\"nav-item\">"?>
+            <a class="nav-link" href="companies.php">By Company</a>
+          </li>
+          </li>
+          <?= (isset($nav) && $nav == "Highest Paid") ? "<li class=\"nav-item active\">" : "<li class=\"nav-item\">"?>
+            <a class="nav-link" href="HighestPaid.php">Highest Paid</a>
+          </li>
+
         </ul>
         <?= isset($user) ?
         "<ul class=\"navbar-nav text-right\">
