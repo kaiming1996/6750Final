@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 26, 2020 at 01:34 PM
+-- Generation Time: Apr 26, 2020 at 10:07 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.2.29
 
@@ -20,6 +20,40 @@ SET time_zone = "+00:00";
 --
 -- Database: `cs6750`
 --
+
+DELIMITER $$
+--
+-- Procedures
+--
+CREATE DEFINER=`root`@`localhost` PROCEDURE `HighestPaidByCity` ()  READS SQL DATA
+BEGIN
+    SELECT 
+		e.CITY as city, e.STATE as state, count(m.CASE_NUMBER) as num, FORMAT(avg(m.WAGE_FROM),0) as wage
+     FROM
+		`employer` as e
+        JOIN `employment` as m on m.EMPLOYER_ID = e.EMPLOYER_ID
+    WHERE m.WAGE_UNIT = 'year'
+    GROUP BY e.CITY
+    HAVING count(m.CASE_NUMBER) > 2
+    ORDER BY avg(m.WAGE_FROM) DESC
+    LIMIT 20;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `HighestPaidByCompany` ()  READS SQL DATA
+BEGIN
+    SELECT 
+		e.EMPLOYER_NAME as name, count(m.CASE_NUMBER) as num, FORMAT(avg(m.WAGE_FROM),0) as wage
+     FROM
+		`employer` as e
+        JOIN `employment` as m on m.EMPLOYER_ID = e.EMPLOYER_ID
+    WHERE m.WAGE_UNIT = 'year'
+    GROUP BY e.EMPLOYER_NAME
+    HAVING count(m.CASE_NUMBER) > 2
+    ORDER BY avg(m.WAGE_FROM) DESC
+    LIMIT 20;
+END$$
+
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -473,7 +507,6 @@ CREATE TABLE `case` (
 --
 
 INSERT INTO `case` (`CASE_NUMBER`, `CASE_STATUS`, `CASE_SUBMITTED`, `DECISION_DATE`, `ORIGINAL_CERT_DATE`) VALUES
-('I-200-16092-327771', 'WITHDRAWN', '2016-04-08', '2019-04-30', NULL),
 ('I-203-17188-450729', 'WITHDRAWN', '2017-07-14', '2019-05-13', NULL),
 ('I-203-17229-572307', 'WITHDRAWN', '2017-08-23', '2019-04-30', NULL),
 ('I-203-17356-299648', 'WITHDRAWN', '2017-12-22', '2019-08-20', NULL),
@@ -1150,9 +1183,9 @@ INSERT INTO `case` (`CASE_NUMBER`, `CASE_STATUS`, `CASE_SUBMITTED`, `DECISION_DA
 ('I-200-18275-175342', 'CERTIFIED', '2018-10-02', '2018-10-09', NULL),
 ('I-200-18275-291509', 'CERTIFIED-WITHDRAWN', '2018-10-03', '2018-10-10', '2018-10-10'),
 ('I-203-18276-023927', 'DENIED', '2018-10-03', '2018-10-05', NULL),
-('I-200-18275-101277', 'CERTIFIED', '2018-10-03', '2018-10-10', NULL);
+('I-200-18275-101277', 'CERTIFIED', '2018-10-03', '2018-10-10', NULL),
+('I-200-18276-442733', 'CERTIFIED-WITHDRAWN', '2018-10-03', '2018-10-10', '2018-10-10');
 INSERT INTO `case` (`CASE_NUMBER`, `CASE_STATUS`, `CASE_SUBMITTED`, `DECISION_DATE`, `ORIGINAL_CERT_DATE`) VALUES
-('I-200-18276-442733', 'CERTIFIED-WITHDRAWN', '2018-10-03', '2018-10-10', '2018-10-10'),
 ('I-200-18276-732171', 'CERTIFIED', '2018-10-03', '2018-10-10', NULL),
 ('I-203-18276-047915', 'CERTIFIED', '2018-10-03', '2018-10-10', NULL),
 ('I-200-18264-366283', 'CERTIFIED', '2018-10-03', '2018-10-10', NULL),
@@ -11865,17 +11898,17 @@ CREATE TABLE `user` (
   `USERNAME` varchar(50) NOT NULL,
   `EMAIL` varchar(50) NOT NULL,
   `PASSWORD` varchar(64) NOT NULL,
-  `CREATED_AT` date NOT NULL DEFAULT '2020-03-25'
+  `CREATED_AT` date NOT NULL DEFAULT '2020-03-25',
+  `ROLE` varchar(5) NOT NULL DEFAULT 'user'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`USER_ID`, `USERNAME`, `EMAIL`, `PASSWORD`, `CREATED_AT`) VALUES
-(2, '1', '11@11.com', '6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c0', '2020-04-26'),
-(4, 'ttt', 't@tt.com', '0e07cf830957701d43c183f1515f63e6b68027e528f43ef52b', '2020-04-26'),
-(5, 't', 't@tt.com', '0e07cf830957701d43c183f1515f63e6b68027e528f43ef52b1527a520ddec82', '2020-04-26');
+INSERT INTO `user` (`USER_ID`, `USERNAME`, `EMAIL`, `PASSWORD`, `CREATED_AT`, `ROLE`) VALUES
+(2, '1', '11@11.com', '6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c0', '2020-04-26', '0'),
+(6, 'admin', 'admin@abc.com', 'adminadmin', '2020-03-25', 'admin');
 
 --
 -- Indexes for dumped tables
@@ -11931,7 +11964,7 @@ ALTER TABLE `submit`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `USER_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `USER_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
