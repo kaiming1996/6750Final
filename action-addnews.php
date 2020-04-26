@@ -45,6 +45,7 @@ else{
 if (!$date_flag){
     alert("decision date format error");
     echo "<meta http-equiv='refresh' content='1; URL=addnews.html' >";
+    return;
 }
 if (!empty($ORIGINAL_CERT_DATE)){
 $date_temp=explode(" ",$ORIGINAL_CERT_DATE);
@@ -56,7 +57,7 @@ else{
 }
 if (!$date_flag){
     alert("case submitted date format error");
-    echo "<meta http-equiv='refresh' content='1; URL=addnews.html' >";
+    return;
 }
 }
 // 插入数据 warning:Case is case sensitive
