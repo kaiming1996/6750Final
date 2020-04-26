@@ -1,11 +1,12 @@
 <?php
+session_start();
 $PageTitle="Login to H1B Matters";
 include_once('templates/header.php');
 ?>
 
 <?php
-require('db.php');
-session_start();
+require('db-login.php');
+
 
 // If form submitted, insert values into the database.
 if (isset($_POST['username'])){
@@ -26,7 +27,11 @@ if (isset($_POST['username'])){
 	$result = mysqli_query($con,$query) or die(mysqli_error($con));
 	$rows = mysqli_num_rows($result);
   if($rows==1){
-	  $_SESSION['username'] = $username;
+		$_SESSION['username'] = $username;
+		$_SESSION['role'] = mysqli_fetch_assoc($result)['ROLE'];
+
+		mysqli_close($con);
+		require('db.php');
     // Redirect user to index.php
 	  header("Location: index.php");
   }else{

@@ -1,5 +1,5 @@
 <?php
-require('db.php');
+require('../db.php');
 
 $id = $_GET['id'];
 $query = "DELETE FROM `case` WHERE CASE_NUMBER='{$id}'";

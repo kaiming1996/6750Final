@@ -4,7 +4,7 @@ include_once('templates/header.php');
 ?>
 
 <?php
-require('db.php');
+require('db-register.php');
 // If form submitted, insert values into the database.
 if (isset($_REQUEST['username'])){
         // removes backslashes
@@ -17,9 +17,10 @@ if (isset($_REQUEST['username'])){
 	$password1 = mysqli_real_escape_string($con,$password);
 	$password = hash('sha256', $password1);
 	$trn_date = date("Y-m-d H:i:s");
-        $query = "INSERT into `user` (username, password, email, created_at)
-VALUES ($username, $password, $email, $trn_date)";
+        $query = 'INSERT into `user` (username, password, email, created_at, role)
+VALUES ("'.$username.'", "'.$password.'","'. $email.'", "'.$trn_date.'", "user")';
         $result = mysqli_query($con,$query) or die(mysqli_error($con));
+        mysqli_close($con);
         if($result){
             echo "<div class='form'>
 <h3>👌 You are registered successfully.</h3>

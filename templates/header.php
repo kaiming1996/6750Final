@@ -15,7 +15,7 @@
 
     <header>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-      <a class="navbar-brand text-warning" href="#">H1B Matters</a>
+      <a class="navbar-brand text-warning" href="index.php">H1B Matters</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -50,9 +50,14 @@
               <a class=\"nav-link\" href=\"#\">🤑 ".$user."</a>
           </li>
           <li class=\"nav-item active\">
-              <a class=\"nav-link\" href=\"#\">Log Out</a>
+              <a class=\"nav-link\" href=\"logout.php\">Log Out</a>
           </li>
-        </ul>" : ""?>
+        </ul>" : "<ul class=\"navbar-nav text-right\">
+
+        <li class=\"nav-item active\">
+            <a class=\"nav-link\" href=\"login.php\">Log In</a>
+        </li>
+      </ul>"?>
       </div>
     </nav>
   </header>
