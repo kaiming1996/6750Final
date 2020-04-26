@@ -7,9 +7,9 @@
 
     <link href="css/bootstrap.min.css" rel="stylesheet"/>
     <link href="css/style.css" rel="stylesheet"/>
-    <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery-3.5.0.min.js"></script>
     <script src="http://malsup.github.io/jquery.form.js"></script>
+    <script src="js/bootstrap.min.js"></script>
   </head>
   <body>
 
@@ -35,8 +35,12 @@
             <a class="nav-link" href="companies.php">By Company</a>
           </li>
           </li>
-          <?= (isset($nav) && $nav == "Highest Paid") ? "<li class=\"nav-item active\">" : "<li class=\"nav-item\">"?>
-            <a class="nav-link" href="HighestPaid.php">Highest Paid</a>
+          <?= (isset($nav) && $nav == "highest_paid") ? "<li class=\"nav-item active dropdown\">" : "<li class=\"nav-item dropdown\">"?>
+            <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" href="#">Highest Paid</a>
+            <div class="dropdown-menu" >
+              <a class="dropdown-item" href="highest_paid_companies.php">By Company</a>
+              <a class="dropdown-item" href="highest_paid_cities.php">By City</a>
+            </div>
           </li>
 
         </ul>

@@ -12,7 +12,6 @@ include_once('templates/header.php');
 ?>
 
 			<?php
-
 						echo '
 						<h2>Search</h2>
 						<form action="query/companies.php" method="post" id="myForm" name="companies"> 
