@@ -42,6 +42,9 @@
               <a class="dropdown-item" href="highest_paid_cities.php">By City</a>
             </div>
           </li>
+           <?= (isset($nav) && $nav == "download") ? "<li class=\"nav-item active\">" : "<li class=\"nav-item\">"?>
+            <a class="nav-link" href="download.php">Export CSV</a>
+          </li>
 
         </ul>
         <?= isset($user) ?
