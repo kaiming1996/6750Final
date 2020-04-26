@@ -8,6 +8,8 @@
     <link href="css/bootstrap.min.css" rel="stylesheet"/>
     <link href="css/style.css" rel="stylesheet"/>
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery-3.5.0.min.js"></script>
+    <script src="http://malsup.github.io/jquery.form.js"></script>
   </head>
   <body>
 
@@ -22,8 +24,8 @@
           <?= (isset($nav) && $nav == "home") ? "<li class=\"nav-item active\">" : "<li class=\"nav-item\">"?>
             <a class="nav-link" href="index.php">Home</a>
           </li>
-          <?= (isset($nav) && $nav == "link") ? "<li class=\"nav-item active\">" : "<li class=\"nav-item\">"?>
-            <a class="nav-link" href="#">Link</a>
+          <?= (isset($nav) && $nav == "cases") ? "<li class=\"nav-item active\">" : "<li class=\"nav-item\">"?>
+            <a class="nav-link" href="search_guest.php">H1B Cases</a>
           </li>
           <li class="nav-item ">
             <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
@@ -31,8 +33,8 @@
         </ul>
         <?= isset($user) ?
         "<ul class=\"navbar-nav text-right\">
-          <li class=\"nav-item\">
-              <p >🤑" + $user + "</p>
+          <li class=\"nav-item\ active\">
+              <a class=\"nav-link\" href=\"#\">🤑 ".$user."</a>
           </li>
           <li class=\"nav-item active\">
               <a class=\"nav-link\" href=\"#\">Log Out</a>
