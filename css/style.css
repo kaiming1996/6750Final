@@ -1,4 +1,4 @@
-body {
+/* body {
      margin: 25px;
      background-color: rgb(82, 148, 192);
      font-family: arial, sans-serif;
@@ -47,4 +47,25 @@ input[type='submit']{
 }
 input[type='submit']:hover {
      background-color: f0df74;
+} */
+
+main {
+     margin-top: 100px;
+     margin-left: 20px;
+     margin-right: 10px;
 }
+
+.form-signin {
+     width: 100%;
+     max-width: 330px;
+     padding: 15px;
+     margin: auto;
+}
+
+.form-signin .form-control {
+     position: relative;
+     box-sizing: border-box;
+     height: auto;
+     padding: 10px;
+     font-size: 16px;
+   }

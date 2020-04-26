@@ -1,7 +1,7 @@
 <?php
 // Enter your Host, username, password, database below.
 
-$con = mysqli_connect("localhost","dbusername","dbpassword","dbname");
+$con = mysqli_connect("your server","your username","your pw","your database");
 // Check connection
 if (mysqli_connect_errno())
   {
