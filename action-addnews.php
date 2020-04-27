@@ -21,7 +21,7 @@ function alert($message){
 $status_list= array("WITHDRAWN","CERTIFIED-WITHDRAWN","DENIED","CERTIFIED");
 if (!in_array($CASE_STATUS,$status_list)){
     alert("INVALID CASE STATUS, PLEASE SELECT FROM WITHDRAWN,CERTIFIED-WITHDRAWN,DENIED,CERTIFIED");
-    echo "<meta http-equiv='refresh' content='1; URL=addnews.html' >";
+    echo "<meta http-equiv='refresh' content='1; URL=insert.html' >";
 
 }
 $date_temp=explode(" ",$CASE_SUBMITTED);
@@ -33,7 +33,7 @@ else{
 }
 if (!$date_flag){
     alert("case submitted date format error");
-    echo "<meta http-equiv='refresh' content='1; URL=addnews.html' >";
+    echo "<meta http-equiv='refresh' content='1; URL=insert.html' >";
 }
 $date_temp=explode(" ",$DECISION_DATE);
 if (sizeof($date_temp)==2){
@@ -44,7 +44,7 @@ else{
 }
 if (!$date_flag){
     alert("decision date format error");
-    echo "<meta http-equiv='refresh' content='1; URL=addnews.html' >";
+    echo "<meta http-equiv='refresh' content='1; URL=insert.html' >";
     return;
 }
 if (!empty($ORIGINAL_CERT_DATE)){

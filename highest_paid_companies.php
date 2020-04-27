@@ -14,8 +14,9 @@ include_once('templates/header.php');
 			<?php
 
 						echo '
-            <h2>Top 20 Companies with Highest Average Salary</h2>
-            <p>Only companies with at least 3 filing cases are included.</p>
+            <h2>🔥 Top 20 Companies with Highest Average Salary</h2>
+						<p>Only companies with at least 3 filing cases are included.</p>
+						<br>
 
 
 

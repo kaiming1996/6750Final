@@ -1,4 +1,5 @@
 <?php
+      session_start();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
       // connect to db
@@ -9,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
       $query = "SELECT `employment`.`CASE_NUMBER` as a, `employer`.`EMPLOYER_NAME` as b,	`employment`.`WAGE_FROM` as c, `employer`.`CITY` as d, `employer`.`STATE` as e, `employer`.`COUNTRY`as f FROM `employment` NATURAL JOIN `employer`".$city;
 
-      $result = mysqli_query($con,$query) or die(mysql_error());
+      $result = mysqli_query($con,$query) or die(mysqli_error($con));
 
             
     $newsNum=mysqli_num_rows($result);  

@@ -32,6 +32,8 @@ if (isset($_POST['username'])){
 
 		mysqli_close($con);
 		require('db.php');
+
+		echo $_SESSION['username'];
     // Redirect user to index.php
 	  header("Location: index.php");
   }else{

@@ -12,14 +12,14 @@ include_once('templates/header.php');
 ?>
 
 			<?php
-
 						echo '
-						<h2>Search</h2>
+						<h2>📁 H1B Filing Cases</h2>
 						<form action="search_case.php" method="post" id="myForm" name="search_case"> 
 						Case number: <input type="text" name="num"> 
 						<input type="button" value="search" id="search">
 
 						</form> 
+						<br>
 
 
 						<div id="tb">Loading...</div>

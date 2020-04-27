@@ -1,5 +1,6 @@
 <?php
 error_reporting(E_ALL^E_NOTICE);
+session_start();
 // connect to db
 require('../db.php');
 
@@ -13,5 +14,5 @@ $ORIGINAL_CERT_DATE = $_POST['ORIGINAL_CERT_DATE'];
 $query = "INSERT INTO `case`(CASE_NUMBER,CASE_STATUS,CASE_SUBMITTED,DECISION_DATE,ORIGINAL_CERT_DATE) VALUES ('$CASE_NUMBER','$CASE_STATUS','$CASE_SUBMITTED','$DECISION_DATE','$ORIGINAL_CERT_DATE')";
 					
 $result = mysqli_query($con,$query) or die(mysql_error());
-header("Location:search_index.php");  
+header("Location:cases.php");  
 ?>

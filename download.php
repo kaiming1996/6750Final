@@ -1,7 +1,7 @@
 <?php 
   
 // Initialize a file URL to the variable 
-$url = 'http://192.168.64.2/db/h1b.csv'; 
+$url = 'http://localhost/6750Final/db/h1b.csv'; 
 
 // Use basename() function to return the base name of file  
 $file_name = basename($url); 

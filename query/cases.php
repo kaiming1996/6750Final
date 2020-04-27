@@ -1,4 +1,5 @@
 <?php
+      session_start();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 						// connect to db
@@ -13,6 +14,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             
 					$newsNum=mysqli_num_rows($result);  
+					$admincol = '';
+					$adminaction = '';
+
+					if (isset($_SESSION['role']) && $_SESSION['role'] == 'admin') {
+						$admincol = '<th scope="col">Action</th>';
+					}
 
 					$table = '<table class="table table-striped">
 					<thead>
@@ -22,20 +29,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 							<th scope="col">Case Submitted</th>
 							<th scope="col">Decision Date</th>
 							<th scope="col">Original Cert Date</th>
-							<th scope="col">Action</th>
+							'.$admincol.'
 						</tr>
 					</thead>
 					<tbody>';
 					for ($i=0; $i<$newsNum; $i++){
 						$row = mysqli_fetch_assoc($result);
+						if (isset($_SESSION['role']) && $_SESSION['role'] == 'admin') {
+							$adminaction = '<td><a href="query/delete.php?q='.$row['CASE_NUMBER'].'"> ❌ ️</a></td>';
+						}
 						$table .= '    
 						<tr>
-						<th scope="row">'.$row['CASE_NUMBER'].'</th>
+						<th scope="row"><a href="query/details.php?q='.$row['CASE_NUMBER'].'">'.$row['CASE_NUMBER'].'</a></th>
 						<td>'.$row['CASE_STATUS'].'</td>
 						<td>'.$row['CASE_SUBMITTED'].'</td>
 						<td>'.$row['DECISION_DATE'].'</td>
 						<td>'.$row['ORIGINAL_CERT_DATE'].'</td>
-						<td>'.$row['ORIGINAL_CERT_DATE'].'</td>
+						'.$adminaction.'
 					</tr>';
 					}
 					$table .=   '</tbody>

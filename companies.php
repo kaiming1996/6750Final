@@ -13,12 +13,13 @@ include_once('templates/header.php');
 
 			<?php
 						echo '
-						<h2>Search</h2>
+						<h2>💼 H1B Cases by Company</h2>
 						<form action="query/companies.php" method="post" id="myForm" name="companies"> 
 						Company: <input type="text" name="company"> 
 						<input type="button" value="search" id="search">
 
-						</form> 
+            </form> 
+            <br>
 
 
 						<div id="tb">Loading...</div>

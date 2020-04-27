@@ -55,7 +55,7 @@ VALUES ("'.$username.'", "'.$password.'","'. $email.'", "'.$trn_date.'", "user")
     </div>
     <button type="submit" class="btn btn-large btn-primary btn-block">Sign Up</button>
   </form>
-  <p>Already a member? <a href='registration.php'>Sign in Here</a></p>
+  <p>Already a member? <a href='login.php'>Sign in Here</a></p>
 </div>
 
 <?php } ?>
