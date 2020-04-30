@@ -61,8 +61,8 @@ if (!$date_flag){
 }
 }
 // 插入数据 warning:Case is case sensitive
-$query = "INSERT INTO `CASE`(CASE_NUMBER,CASE_STATUS,CASE_SUBMITTED,DECISION_DATE,ORIGINAL_CERT_DATE) VALUES ('$CASE_NUMBER','$CASE_STATUS','$CASE_SUBMITTED','$DECISION_DATE','$ORIGINAL_CERT_DATE')";
+$query = "INSERT INTO `CASE`(CASE_NUMBER,CASE_STATUS,CASE_SUBMITTED,DECISION_DATE,ORIGINAL_CERT_DATE) VALUES ('$CASE_NUMBER','WITHDRAWN','2020-03-09','2020-04-09','2020-04-09')";
 					
 $result = mysqli_query($con,$query) or die(mysql_error());
-header("Location:search_index.php");  
+header("Location:cases.php");  
 ?>

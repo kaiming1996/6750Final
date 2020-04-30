@@ -18,7 +18,7 @@ include_once('templates/header.php');
 						Case number: <input type="text" name="num"> 
 						<input type="button" value="search" id="search">
 
-						</form> 
+						</form> <a href="insert.php">Add New Case</a>
 						<br>
 
 

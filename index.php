@@ -3,7 +3,7 @@ session_start();
 if(isset($_SESSION["username"])){
   $user=$_SESSION["username"];
 }
-$PageTitle="Login to H1B Matters";
+$PageTitle="Welcome";
 $nav="home";
 include_once('templates/header.php');
 ?>

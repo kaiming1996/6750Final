@@ -9,6 +9,19 @@ $downloadedFileContents = file_get_contents($url);
 if($downloadedFileContents === false){
     throw new Exception('Failed to download file at: ' . $url);
 }
+echo "File downloaded successfully";
+header('Pragma: public');
+header('Expires: 0');
+header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
+header('Cache-Control: private', false); // required for certain browsers 
+header('Content-Type: application/pdf');
+
+header('Content-Disposition: attachment; filename="'. basename($file_name) . '";');
+header('Content-Transfer-Encoding: binary');
+header('Content-Length: ' . filesize($file_name));
+
+readfile($file_name);
+
 
 if(file_put_contents( $file_name,file_get_contents($url))) { 
     echo "File downloaded successfully"; 
@@ -16,6 +29,7 @@ if(file_put_contents( $file_name,file_get_contents($url))) {
 else { 
     echo "File downloading failed."; 
 }
+
    
 // // Use file_get_contents() function to get the file 
 // // from url and use file_put_contents() function to 
